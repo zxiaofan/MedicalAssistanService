@@ -1,0 +1,3 @@
+*.png linguist-language=Java
+*.jpg linguist-language=Java
+*.html linguist-language=Scala
