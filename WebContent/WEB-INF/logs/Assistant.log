@@ -1,0 +1,61 @@
+2016-06-15 09:12:12 ThreadPoolAsynchronousRunner.java WARN com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@5a9c677f -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2016-06-15 09:12:12 ThreadPoolAsynchronousRunner.java WARN com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@5a9c677f -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@24399c8a (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@544df876 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@75497728 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cc9ea40
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@747cf89f
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2016-06-15 09:12:33 APIService.java WARN 查询医院信息成功By疾病名(queryHospitalsByDisease):白内障
+2016-06-15 09:37:58 APIService.java WARN 查询医院信息成功By疾病名(queryHospitalsByDisease):白内障
+2016-06-15 09:44:53 APIService.java WARN 查询医院信息成功By疾病名(queryHospitalsByDisease):白内障
+2016-06-15 09:51:17 APIService.java WARN 查询医生信息成功By疾病名(queryDoctorsByDisease):白内障
+2016-06-16 15:14:14 ThreadPoolAsynchronousRunner.java WARN com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@f614000 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2016-06-16 15:14:14 ThreadPoolAsynchronousRunner.java WARN com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@f614000 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@71119188 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@3d9ff671 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@20b44ae8 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1915fa26
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6475b55d
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2016-06-16 15:15:53 DrmedDao.java ERROR FUNCTION medical_assistant_db.rank does not existsql:SELECT KeyId,DiseaseName,rank(IF(MATCH (SymptomWith) AGAINST ('I_67'),1,0)) as rank FROM disease_details_match WHERE MATCH (PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures,Coughing,AffectedArea,SymptomAppears,SwallowFelling) AGAINST ('I_67 ') ORDER BY rank DESC limit 16;
+2016-06-16 15:15:53 DrmedDao.java ERROR The expression 'list' evaluated to a null value.
+2016-06-16 15:20:42 APIService.java WARN 查询disease成功By症状(queryDiseaseBySymptom):[手臂疼痛]
+2016-06-16 15:21:24 APIService.java ERROR 症状转key异常:[手臂疼痛1]
+2016-06-16 16:33:24 APIService.java WARN 查询disease成功By症状(queryDiseaseBySymptom):[手臂疼痛]

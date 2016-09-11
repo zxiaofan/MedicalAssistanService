@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<!-- 注册mapper-sql.xml文件 -->
+		<mapper resource="com/zxiaofan/config/mybatis/DataObtainService.xml" />
+		<mapper resource="com/zxiaofan/config/mybatis/QueryServiceMapper.xml" />
+		<mapper resource="com/zxiaofan/config/mybatis/APIMapper.xml" />
+	</mappers>
+</configuration>

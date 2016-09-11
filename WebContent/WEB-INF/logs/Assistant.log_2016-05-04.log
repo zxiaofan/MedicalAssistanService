@@ -1,0 +1,4 @@
+2016-05-04 09:52:07 HttpUtils.java ERROR HTTP error fetching URL
+2016-05-04 13:51:14 HttpUtils.java ERROR HTTP error fetching URL
+2016-05-04 13:51:56 HttpUtils.java ERROR HTTP error fetching URL
+2016-05-04 19:00:57 DrmedDao.java WARN sql:SELECT KeyId,DiseaseName,(IF(MATCH (PainPerception) AGAINST ('A_15'),1,0)+IF(MATCH (SymptomWith) AGAINST ('I_136'),1,0)) as rank FROM disease_details_match WHERE MATCH (PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures,Coughing,AffectedArea,SymptomAppears,SwallowFelling) AGAINST ('A_15 I_136 ') ORDER BY rank DESC;

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="drmedData">
+
+	<sql id="Base_Column_List">
+		KeyId,IsAdult,SymptomName,PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,TreatmentAdvice,SwallowFelling,ModifyTime
+	</sql>
+
+	<sql id="Disease_Column_List">
+		KeyId,DiseaseName,PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,SwallowFelling,Summary,SymptomDetails,CauseOfDisease,RiskFactor,Diagnosis,Complications,Treatment,Prevention,SelfCare,UnCommonTreat,SeeDoctorTime,SymptomAndComplications,TreatmentAndPrevention,ScreenAndDiagnosis,ReplacementTherapy,DiagnosisAndTreatment,DiabetesTypes,DiabetesDiagnosis,DiabetesPrediabetes,DiabetesTypeI,DiabetesTypeII,GDM,DiabetesFootCare,NutritionAdvice,UrlDisease,ModifyTime
+	</sql>
+
+	<!-- 插入症状数据 -->
+	<insert id="insertOne"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.SymptomDetailsBo">
+		INSERT INTO ${tableName}
+		(
+		<include refid="Base_Column_List" />
+		)
+		VALUES
+		(
+		#{keyId},#{isAdult},#{symptomName},#{painPerception},#{painRegion},#{painDuration},#{symptomWorsen},#{otherFeaturesOfPain},#{symptomReason},#{symptomRelieved},#{symptomStart},#{symptomWith},#{symptomFelling},#{bloodPosition},#{otherFeatures
+		},#{coughing},#{affectedArea},#{symptomAppears},#{treatmentAdvice},#{swallowFelling},#{modifyTime}
+		)
+	</insert>
+	<!-- 查询库中现有的disease -->
+	<select id="selectExistingDisease" resultType="String">
+		SELECT DiseaseName
+		FROM disease_details
+	</select>
+	<!-- 插入disease数据 -->
+	<insert id="insertDiseaseOne"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.DiseaseDetailsBo">
+		INSERT INTO ${tableName}
+		(
+		<include refid="Disease_Column_List" />
+		)
+		VALUES
+		(
+		#{keyId},#{diseaseName},#{painPerception},#{painRegion},#{painDuration},#{symptomWorsen},#{otherFeaturesOfPain},#{symptomReason},#{symptomRelieved},#{symptomStart},#{symptomWith},#{symptomFelling},#{bloodPosition},#{otherFeatures
+		},#{coughing},#{affectedArea},#{symptomAppears},#{swallowFelling},#{summary},#{symptomDetails},#{causeOfDisease},#{riskFactor},#{diagnosis},#{complications},#{treatment},#{prevention},#{selfCare},#{unCommonTreat},#{seeDoctorTime},#{symptomAndComplications
+		},#{treatmentAndPrevention},#{screenAndDiagnosis},#{replacementTherapy},#{diagnosisAndTreatment},#{diabetesTypes},#{diabetesDiagnosis},#{diabetesPrediabetes},#{diabetesTypeI},#{diabetesTypeII},#{gDM},#{diabetesFootCare},#{nutritionAdvice},#{urlDisease},#{modifyTime}
+		)
+	</insert>
+
+	<!-- 通过keyId获取disease -->
+	<select id="getDiseaseBykeyId" parameterType="java.lang.String"
+		resultType="Map">
+		SELECT
+		KeyId,DiseaseName,PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,SwallowFelling
+		FROM
+		disease_details where KeyId=#{keyId}
+	</select>
+	<!-- 通过keyId更新diseas症状数据e -->
+	<update id="updateDiseaseByKeyId"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.DiseaseDetailsBo">
+		update ${tableName}
+		<set>
+			<if test="painPerception !=null and painPerception != ''">PainPerception=#{painPerception},</if>
+			<if test="painRegion !=null and painRegion != ''">PainRegion=#{painRegion},</if>
+			<if test="painDuration !=null and painDuration != ''">PainDuration=#{painDuration},</if>
+			<if test="symptomWorsen !=null and symptomWorsen != ''">SymptomWorsen=#{symptomWorsen},</if>
+			<if test="otherFeaturesOfPain !=null and otherFeaturesOfPain != ''">OtherFeaturesOfPain=#{otherFeaturesOfPain},</if>
+			<if test="symptomReason !=null and symptomReason != ''">SymptomReason=#{symptomReason},</if>
+			<if test="symptomRelieved !=null and symptomRelieved != ''">SymptomRelieved=#{symptomRelieved},</if>
+			<if test="symptomStart !=null and symptomStart != ''">SymptomStart=#{symptomStart},</if>
+			<if test="symptomWith !=null and symptomWith != ''">SymptomWith=#{symptomWith},</if>
+			<if test="symptomFelling !=null and symptomFelling != ''">SymptomFelling=#{symptomFelling},</if>
+			<if test="bloodPosition !=null and bloodPosition != ''">BloodPosition=#{bloodPosition},</if>
+			<if test="otherFeatures  !=null and otherFeatures  != ''">OtherFeatures =#{otherFeatures },</if>
+			<if test="coughing !=null and coughing != ''">Coughing=#{coughing},</if>
+			<if test="affectedArea !=null and affectedArea != ''">AffectedArea=#{affectedArea},</if>
+			<if test="symptomAppears !=null and symptomAppears != ''">SymptomAppears=#{symptomAppears},</if>
+			<if test="swallowFelling !=null and swallowFelling != ''">SwallowFelling=#{swallowFelling},</if>
+			<if test="modifyTime !=null and modifyTime != ''">ModifyTime=#{modifyTime}</if>
+		</set>
+		where KeyId=#{keyId}
+	</update>
+	<!-- 查询症状数据，用以生成全文索引匹配表 -->
+	<select id="querySymptoms"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.SymptomDetailsBo">
+		SELECT
+		PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,SwallowFelling
+		FROM
+		symptom_details
+	</select>
+	<!-- 插入feature Map数据 -->
+	<insert id="insertFeatureMap" parameterType="java.util.List">
+		INSERT INTO feature_matching
+		(
+		FeatureName,FeatureId
+		)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.featureName,jdbcType=VARCHAR},#{item.featureId,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	<!--查询所有disease的feature字段 -->
+	<select id="queryAllDiseaseFeature"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.DiseaseDetailsBo">
+		SELECT
+		KeyId,DiseaseName,PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,SwallowFelling
+		FROM
+		disease_details
+	</select>
+
+	<!-- haodf医生信息 start -->
+
+	<!-- 插入医生数据 -->
+	<insert id="insertHaodfDocOne"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.DoctorsInfoBo">
+		INSERT INTO doctors_info (
+		KeyId,DocName,DiseaseName,DiseaseNamePinYin,DocTitle,DocHospital,DocDepart,RecommendHeat,DocAdept,PracticeExperience,ThanksLetterNum,UrlDoc,ModifyTime
+		) VALUES
+		(
+		#{keyId},#{docName},#{diseaseName},#{diseaseNamePinYin},#{docTitle},#{docHospital},#{docDepart},#{recommendHeat},#{docAdept},#{practiceExperience
+		},#{thanksLetterNum},#{urlDoc},#{modifyTime}
+		)
+	</insert>
+	<!-- 根据KeyId获取DiseaseName信息 -->
+	<select id="getKeyIdByDiseaseNamePinYin" parameterType="java.lang.String"
+		resultType="String">
+		${sql}
+	</select>
+	<select id="queryAllKeyIdAndDiseaseName" parameterType="java.lang.String"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.DoctorsInfoBo">
+		select KeyId,DiseaseName,DiseaseNamePinYin from
+		doctors_info
+	</select>
+	<!-- 通过keyId更新Doc diseas症状数据 -->
+	<update id="updateDocDiseaseByKeyId"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.DoctorsInfoBo">
+		update Doctors_Info
+		<set>
+			<if test="docName !=null and docName != ''">DocName=#{docName},</if>
+			<if test="diseaseName !=null and diseaseName != ''">DiseaseName=#{diseaseName},</if>
+			<if test="diseaseNamePinYin !=null and diseaseNamePinYin != ''">DiseaseNamePinYin=#{diseaseNamePinYin},</if>
+			<if test="docTitle !=null and docTitle != ''">DocTitle=#{docTitle},</if>
+			<if test="docHospital !=null and docHospital != ''">DocHospital=#{docHospital},</if>
+			<if test="docDepart !=null and docDepart != ''">DocDepart=#{docDepart},</if>
+			<if test="recommendHeat !=null and recommendHeat != ''">RecommendHeat=#{recommendHeat},</if>
+			<if test="docAdept !=null and docAdept != ''">DocAdept=#{docAdept},</if>
+			<if test="practiceExperience  !=null and practiceExperience  != ''">PracticeExperience =#{practiceExperience },</if>
+			<if test="thanksLetterNum !=null and thanksLetterNum != ''">ThanksLetterNum=#{thanksLetterNum},</if>
+			<if test="urlDoc !=null and urlDoc != ''">UrlDoc=#{urlDoc},</if>
+			<if test="modifyTime !=null and modifyTime != ''">ModifyTime=#{modifyTime}</if>
+		</set>
+		where KeyId=#{keyId}
+	</update>
+	<!-- 插入医院数据 -->
+	<insert id="insertHaodfHosOne"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.HospitalsInfoBo">
+		INSERT INTO Hospitals_Info (
+		HospitalName,HospitalProvince,HospitalCity,HospitalLevel,Address,TelePhone,ThanksLetterNum,DiseaseName,DiseaseNamePinYin,Url,ModifyTime
+		) VALUES
+		(
+		#{hospitalName},#{hospitalProvince},#{hospitalCity},#{hospitalLevel},#{address},#{telePhone},#{thanksLetterNum},#{diseaseName},#{diseaseNamePinYin},#{url},#{modifyTime}
+		)
+	</insert>
+	<!-- 通过keyId更新医院数据 -->
+	<update id="updateHaodfHos"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.HospitalsInfoBo">
+		update Hospitals_Info
+		<set>
+			<if test="hospitalProvince !=null and hospitalProvince != ''">HospitalProvince=#{hospitalProvince},</if>
+			<if test="hospitalCity !=null and hospitalCity != ''">HospitalCity=#{hospitalCity},</if>
+			<if test="hospitalLevel !=null and hospitalLevel != ''">HospitalLevel=#{hospitalLevel},</if>
+			<if test="address !=null and address != ''">Address=#{address},</if>
+			<if test="telePhone !=null and telePhone != ''">TelePhone=#{telePhone},</if>
+			<if test="thanksLetterNum !=null and thanksLetterNum != ''">ThanksLetterNum=#{thanksLetterNum},</if>
+			<if test="diseaseName !=null and diseaseName != ''">DiseaseName=#{diseaseName},</if>
+			<if test="diseaseNamePinYin !=null and diseaseNamePinYin != ''">DiseaseNamePinYin=#{diseaseNamePinYin},</if>
+			<if test="url !=null and url != ''">Url=#{url},</if>
+			<if test="modifyTime !=null and modifyTime != ''">ModifyTime=#{modifyTime}</if>
+		</set>
+		where HospitalName=#{hospitalName}
+	</update>
+	<!-- 通provence获取医院名 -->
+	<select id="queryHosByProvence" parameterType="java.lang.String"
+		resultType="String">
+		SELECT
+		HospitalName
+		FROM
+		Hospitals_Info where
+		HospitalProvince=#{hospitalProvince}
+	</select>
+	<!-- 通provence获取医院名 -->
+	<!-- ${sql}要用$符号，否则报错 -->
+	<select id="queryExistHosByDisease" parameterType="java.lang.String"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.HospitalsInfoBo">
+		${sql}
+	</select>
+	<!-- haodf医生信息 end -->
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="queryServiceMapper">
+	<!-- 查询匹配的Disease的KeyId信息 -->
+	<select id="queryMatchedDiseaseKeyId" parameterType="java.lang.String"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.MatchedDiseaseBo">
+		${sql}
+	</select>
+	<!-- 根据KeyId查询匹配的Disease的详细信息 -->
+	<!-- 删除AdjuvantTherapy -->
+	<select id="queryMatchedDisease" parameterType="List"
+		resultType="com.zxiaofan.MedicalAssistanService.model.vo.DetailsFeaturesVo">
+		SELECT
+		KeyId,DiseaseName,PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures
+		,Coughing,AffectedArea,SymptomAppears,SwallowFelling FROM
+		disease_details where
+		<foreach collection="list" item="item" index="index"
+			separator="or">
+			KeyId=(#{item.keyId,jdbcType=VARCHAR})
+		</foreach>
+	</select>
+	<!-- 查询匹配的医生信息ByDiseaseNamePinYin -->
+	<select id="queryDoctorsByDisease" parameterType="java.lang.String"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.DoctorsInfoBo">
+		${sql}
+	</select>
+	<!-- 查询匹配的医院信息ByDiseaseNamePinYin -->
+	<select id="queryHospitalsByDisease" parameterType="java.lang.String"
+		resultType="com.zxiaofan.MedicalAssistanService.model.bo.HospitalsInfoBo">
+		${sql}
+	</select>
+</mapper>

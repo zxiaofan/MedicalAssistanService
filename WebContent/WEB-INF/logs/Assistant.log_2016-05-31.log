@@ -1,0 +1,3 @@
+2016-05-27 12:37:08 DrmedDao.java WARN sql:SELECT KeyId,DiseaseName,(IF(MATCH (SymptomWith) AGAINST ('I_67'),1,0)+IF(MATCH (SymptomWith) AGAINST ('I_228'),1,0)) as rank FROM disease_details_match WHERE MATCH (PainPerception,PainRegion,PainDuration,SymptomWorsen,OtherFeaturesOfPain,SymptomReason,SymptomRelieved,SymptomStart,SymptomWith,SymptomFelling,BloodPosition,OtherFeatures,Coughing,AffectedArea,SymptomAppears,SwallowFelling) AGAINST ('I_67 I_228 ') ORDER BY rank DESC;
+2016-05-27 12:37:09 APIService.java WARN 查询disease成功By症状(queryDiseaseBySymptom):[手臂疼痛, 腰部弯曲]
+2016-05-27 12:38:50 APIService.java ERROR 症状转key异常:[腰部弯曲1, 手臂疼痛1]

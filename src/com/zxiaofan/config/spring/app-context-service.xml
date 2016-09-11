@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd  
+	    http://cxf.apache.org/jaxws 
+	    http://cxf.apache.org/schemas/jaxws.xsd"
+	xmlns:jaxws="http://cxf.apache.org/jaxws">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<!-- 声明需要暴露的服务接口 -->
+	<jaxws:endpoint id="IAPIService" implementor="#apiService"
+		address="/apiService">
+	</jaxws:endpoint>
+
+</beans>

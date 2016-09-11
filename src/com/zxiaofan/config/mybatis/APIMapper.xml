@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiMapper">
+	<!-- 查询用户是否存在 -->
+	<select id="existUser" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		SELECT UserName from user_info WHERE UserName=#{name} LIMIT
+		1;
+	</select>
+	<!-- 用户注册 -->
+	<insert id="register"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.UserInfoBo">
+		INSERT INTO user_info
+		(
+		UserName,PassWord,UserType,TelePhone,FixedPhone,Address,Postcode,email,Birthday,DocumenTType,DocumentID,ModifyTime
+		)
+		VALUES
+		(
+		#{userName},#{passWord},#{userType},#{telePhone},#{fixedPhone},#{address},#{postcode},#{email},#{birthday},#{documenTType},#{documentID},#{modifyTime}
+		)
+	</insert>
+	<!-- 查询用户是否存在 -->
+	<select id="login"
+		parameterType="com.zxiaofan.MedicalAssistanService.model.bo.UserInfoBo"
+		resultType="java.lang.String">
+		SELECT UserName from user_info WHERE UserName=#{userName} and
+		PassWord=#{passWord} LIMIT 1;
+	</select>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>MedicalAssistanService</param-value></context-param>
+	<!-- LOG4J -->
+	<context-param>
+      <param-name>log4jConfigLocation</param-name>
+      <param-value>/WEB-INF/config/log4j.properties</param-value>
+    </context-param>
+    <context-param>
+      <param-name>log4jRefreshInterval</param-name>
+      <param-value>6000</param-value>
+    </context-param>
+    <listener>
+      <listener-class>
+        org.springframework.web.util.Log4jConfigListener
+      </listener-class>
+    </listener>
+	<!-- LOG4J -->
+	
+	<!-- 乱码过滤器begin -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>com.zxiaofan.MedicalAssistanService.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 乱码过滤器 end-->
+	
+	
+	<!-- spring 配置 begin-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<!-- 主配置文件, 其余模块配置文件在app-context.xml进行加载 -->
+		<param-value>
+			classpath:com/zxiaofan/config/spring/app-context.xml,
+			classpath:com/zxiaofan/config/spring/app-context-service.xml,
+			classpath:com/zxiaofan/config/spring/app-context-mybatis.xml
+		</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 配置CXF的servlet start-->
+    <servlet>
+	    <servlet-name>CXFService</servlet-name>
+	    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>2</load-on-startup> 
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>CXFService</servlet-name>
+	    <url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+  	<welcome-file-list>
+    	<welcome-file>login.jsp</welcome-file>
+  	</welcome-file-list>
+</web-app>
