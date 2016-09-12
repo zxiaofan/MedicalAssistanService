@@ -1,7 +1,7 @@
 # MedicalAssistanService
 # **医疗助手之云端服务**    
 项目简介：  
-&emsp;&emsp;本项目是个人毕业设计中的【云端部分】，主要包含【数据打底服务】【疾病自诊及医疗资源推荐服务】两大模块。  
+&emsp;&emsp;本项目是个人毕业设计【医疗小助手】中的【云端部分】，主要包含【数据打底服务】【疾病自诊及医疗资源推荐服务】两大模块。  
 **系统架构如图**：  
 
 ![image](https://github.com/zxiaofan/MedicalAssistanService/blob/master/WebContent/WEB-INF/images/%E5%8C%BB%E7%96%97%E5%8A%A9%E6%89%8B%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png)  
@@ -9,6 +9,10 @@
 **云端主流程**：  
 
 ![image](https://github.com/zxiaofan/MedicalAssistanService/blob/master/WebContent/WEB-INF/images/%E4%BA%91%E7%AB%AF%E4%B8%BB%E6%B5%81%E7%A8%8B.png)  
+
+   **更多图片详见**：  
+
+(https://github.com/zxiaofan/MedicalAssistanService/blob/master/WebContent/WEB-INF/images 
 
 1. __数据打底服务数据来源于第三方医疗网站：__  
    1.1 以Spring+Jsoup+MyBatis作为打底框架，爬取数据并筛选入库   
