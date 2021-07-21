@@ -18,8 +18,8 @@ import org.springframework.util.Log4jConfigurer;
  * @Transactional
  */
 /**
- * ContextConfiguration spring引用的properties位置需要放在src下。 测试时需要将app-context*.xml中的测试配置文件打开： <value>classpath:com/better517na/config/test-jdbc.properties</value>
- * <value>classpath:com/better517na/config/test-log_config.properties</value> 关闭外部配置文件 <value>/WEB-INF/config/jdbc.properties</value> <value>/WEB-INF/config/log_config.properties</value>
+ * ContextConfiguration spring引用的properties位置需要放在src下。 测试时需要将app-context*.xml中的测试配置文件打开： <value>classpath:com/XXX/config/test-jdbc.properties</value>
+ * <value>classpath:com/XXX/config/test-log_config.properties</value> 关闭外部配置文件 <value>/WEB-INF/config/jdbc.properties</value> <value>/WEB-INF/config/log_config.properties</value>
  */
 @ContextConfiguration("/com/zxiaofan/config/spring/app-context*.xml")
 public class BaseTest {
